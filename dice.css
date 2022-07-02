@@ -1,8 +1,41 @@
 @font-face {
     font-family: Dicier;
-    src: url('Fonts/Dicier-Round-Dark.woff2');
+    src: url('Fonts/Dicier-Round-Heavy.woff2');
 }
 .dicier {
     font-family: Dicier, sans-serif;
     font-feature-settings: “liga” 1, “kern” 1, “calt” 1, dlig 1;
+    text-align: center;
+    margin-top: 2rem;
+    
+}
+
+h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    font-size: 300%;
+    color: blue;
+}
+
+#app {
+    text-align: center;
+}
+
+button {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 150%;
+    margin-right: 1rem;
+    background-color: rgb(95, 158, 160, 0.2);   
+}
+
+#dice_container {
+    font-size: 500%;
+    margin-top: 2rem;
+}
+
+#effacer {
+    position: absolute;
+    top: 14em;
+    right: 46%;
 }
