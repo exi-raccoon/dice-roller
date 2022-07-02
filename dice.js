@@ -1,84 +1,41 @@
-const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min; //obtenir un chiffre aléatoire entre les bornes
+function rollDice(_diceFace) {
+    return Math.ceil(Math.random() * _diceFace)
+}
 
-const rollDice4 = () => getRandomNumber(1, 4); //établissement des bornes pour un d4
-const rollDice6 = () => getRandomNumber(1, 6); //établissement des bornes pour un d6
-const rollDice8 = () => getRandomNumber(1, 8); //établissement des bornes pour un d8
-const rollDice10 = () => getRandomNumber(1, 10); //établissement des bornes pour un d10
-const rollDice12 = () => getRandomNumber(1, 12); //établissement des bornes pour un d12
-const rollDice20 = () => getRandomNumber(1, 20); //établissement des bornes pour un d20
-const rollDice100 = () => getRandomNumber(1, 100); //établissement des bornes pour un d100
+function displayResults(_diceResults, _diceFace) {
+    const diceContainer = document.getElementById("dice_container")
+    diceContainer.innerHTML = ""
+    _diceResults.forEach(_diceResults => {
+        let currentDice = document.createElement("span")
+        currentDice.innerHTML = _diceResults + "_ON_D" + _diceFace
 
-//d4
-document.getElementById("rolld4").addEventListener("click", function () {
-    //aller chercher le nom du joueur
-    const player1 = document.getElementById("player1").value;
+        diceContainer.append(currentDice)
+    })
+}
 
-    //lancer le dé pour le joueur
-    const player1Score = rollDice4();
+function generateDiceRoll(_diceCount, _diceFace) {
+    const result = []
+    for (let diceIndex = 0; diceIndex < _diceCount; diceIndex++) {
+        result.push(rollDice(_diceFace))
+    }
+    return result
+}
 
-    //montrer le résultat sur la page
-    document.getElementById("results").innerHTML = `
-    <p>${player1} a lancé le d4 !</p>
-    <p>${player1Score}</p>
-    `;
-});
-
-//d6
-document.getElementById("rolld6").addEventListener("click", function () {
-    const player1 = document.getElementById("player1").value;
-
-    const player1Score = rollDice6();
-
-    document.getElementById("results").innerHTML = `
-    <p>${player1} a lancé le d6 !</p>
-    <p>${player1Score}</p>
-    `;
-});
-
-//d8
-document.getElementById("rolld8").addEventListener("click", function () {
-    const player1 = document.getElementById("player1").value;
-
-    const player1Score = rollDice8();
-
-    document.getElementById("results").innerHTML = `
-    <p>${player1} a lancé le d8 !</p>
-    <p>${player1Score}</p>
-    `;
-});
-
-//d10
-document.getElementById("rolld10").addEventListener("click", function () {
-    const player1 = document.getElementById("player1").value;
-
-    const player1Score = rollDice10();
-
-    document.getElementById("results").innerHTML = `
-    <p>${player1} a lancé le d10 !</p>
-    <p>${player1Score}</p>
-    `;
-});
-
-//d12
-document.getElementById("rolld12").addEventListener("click", function () {
-    const player1 = document.getElementById("player1").value;
-
-    const player1Score = rollDice12();
-
-    document.getElementById("results").innerHTML = `
-    <p>${player1} a lancé le d12 !</p>
-    <p>${player1Score}</p>
-    `;
-});
-
-//d20
-document.getElementById("rolld20").addEventListener("click", function () {
-    const player1 = document.getElementById("player1").value;
-
-    const player1Score = rollDice20();
-
-    document.getElementById("results").innerHTML = `
-    <p>${player1} a lancé le d20 !</p>
-    <p>${player1Score}</p>
-    `;
-});
+window.addEventListener("load", _event => {
+    const diceContainer = document.getElementById("dice_container");
+    ([4, 6, 8, 10, 12, 20]).reverse().forEach((_diceFace) => {
+        let newDiceButton = document.createElement("button")
+        newDiceButton.innerHTML = "Lancer D" + _diceFace
+        newDiceButton.onclick = () => {
+            diceContainer.className = "dicier"
+                    displayResults(
+                        generateDiceRoll(1, _diceFace), _diceFace
+                    )
+        }
+        const removeButton = document.getElementById("effacer")
+        removeButton.onclick = () => {
+            displayResults(0)
+        }
+        document.getElementById("app").prepend(newDiceButton)
+    })
+})
