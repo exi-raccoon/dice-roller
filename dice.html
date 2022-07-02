@@ -6,34 +6,11 @@
         <link rel="stylesheet" href="dice.css">
     </head>
     <body>
-        <h1>Les dés du DnD </h1>
+        <h1> <span class="dicier">D20</span> Les dés du DnD <span class="dicier">D20</span> </h1>
         <div id = "app">
-            <div>
-                <input id = "player1" placeholder="Nom du joueur"/>
-            </div>
-            <div id="boutons">
-                <button id = "rolld4">
-                    Lancer le <span class="dicier">4_ON_D4</span>
-                </button>
-                <button id = "rolld6">
-                    Lancer le <span class="dicier">6_ON_D6</span>
-                </button>
-                <button id = "rolld8">
-                    Lancer le <span class="dicier">8_ON_D8</span>
-                </button>
-                <button id = "rolld10">
-                    Lancer le <span class="dicier">10_ON_D10</span>
-                </button>
-                <button id = "rolld12">
-                    Lancer le <span class="dicier">12_ON_D12</span>
-                </button>
-                <button id = "rolld20">
-                    Lancer le <span class="dicier">20_ON_D20</span>
-                </button>
-            </div>
-            <div id="results"></div>
+            <div id="dice_container"></div>
+            <button id="effacer">Effacer</button>
         </div>
-
         <script src="dice.js"></script>
     </body>
 </html>
