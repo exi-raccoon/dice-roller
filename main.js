@@ -29,7 +29,7 @@ window.addEventListener("load", _event => {
         newDiceButton.onclick = () => {
             diceContainer.className = "dicier"
                     displayResults(
-                        generateDiceRoll(1, _diceFace), _diceFace
+                        generateDiceRoll(1, _diceFace), _diceFace + generateDiceRoll()
                     )
         }
         const removeButton = document.getElementById("effacer")
